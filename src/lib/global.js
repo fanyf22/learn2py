@@ -1,0 +1,5 @@
+export const name = 'Learn2Py'
+export const description = 'Website for Python beginners'
+export const author = 'Philip Fan'
+export const email = 'topfyf@qq.com'
+export const repository = 'https://github.com/fanyf22/learn2py'

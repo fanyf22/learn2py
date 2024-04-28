@@ -1,6 +1,21 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-};
+import Nextra from 'nextra'
 
-export default nextConfig;
+const withNextra = Nextra({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.jsx',
+})
+
+export default withNextra({
+  reactStrictMode: true,
+  transpilePackages: [
+    'rc-util',
+    '@ant-design',
+    'kitchen-flow-editor',
+    '@ant-design/pro-editor',
+    'zustand',
+    'leva',
+    'antd',
+    'rc-pagination',
+    'rc-picker',
+  ],
+})

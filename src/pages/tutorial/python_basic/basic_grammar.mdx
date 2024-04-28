@@ -1,0 +1,86 @@
+import { Callout } from 'nextra/components'
+import Sandbox from '@/components/sandbox'
+
+# 基础 Python 语法
+
+## 输出运算结果
+
+新建一个名为 `calc.py` 的文件，并输入以下内容：
+
+```python filename="calc.py"
+100 + 200
+```
+
+尝试运行一下。
+
+是不是很奇怪？明明刚才在 IDLE 执行代码时会输出 `300{:python}`，现在却什么都没输出？
+
+这是因为 IDLE 的交互模式下会自动输出运算结果，但是如果是执行程序就只能通过 `print()` 函数来输出。
+
+因此，你需要将代码改为：
+
+```python
+print(100 + 200)
+```
+
+## 保存运算结果到变量
+
+对于复杂的程序，我们不可能一有运算结果就输出，有时候需要将运算结果存储以在之后的运算中使用。
+
+这时候，我们就需要用变量来存储运算的结果。
+
+修改 `calc.py` 的代码如下并尝试运行：
+
+```python filename="calc.py"
+x = 100 + 200
+print(x)
+```
+
+## 从交互中获取变量
+
+如果程序只有输出没有输入的话，其运行结果通常是固定的，也就没有多大意义了。
+
+在 Python 中最直接的输入方式就是在运行过程中让用户直接打字输入。
+
+新建一个名为 `input.py` 的文件，输入以下内容并运行：
+
+```python filename="input.py"
+name = input('Please enter your name: ')
+print('Hello,', name)
+```
+
+当执行一行代码时，控制台会输出 `Please enter your name: ` 并且光标停在空格之后。
+
+在这里输入你的名字，然后按下回车，最终的结果应该看起来像这样：
+
+```text
+Please enter your name: Jack
+Hello, Jack
+```
+
+## print 函数的更多用法
+
+我们已经知道 `print()` 可以输出内容到控制台。
+
+在刚才的代码中，我们用 `print('Hello,', name){:python}` 在一行内输出了多个内容。
+
+从结果来看，`'Hello,'{:python}` 和 `name{:python}` 之间有一个空格分隔开来。
+
+现在尝试用 `print()` 函数在一行内输出三个内容：
+
+<Sandbox title="使用 print 函数输出三个内容" />
+
+如果你想要输出多个内容，但是不想用空格分开它们，你可以传入 `sep` 参数。
+
+如果你不希望在输出结束后换行，你可以传入 `end` 参数。
+
+尝试改变下面代码中 `sep` 参数和 `end` 参数的值，看看输出结果：
+
+<Sandbox
+  title="使用 sep 和 end 参数"
+  value={"print('Hello', 'world', '!', sep='', end='')\n"}
+/>
+
+现在练习一下，计算并向控制台输出 `1024 * 768 = ???`。
+
+<Sandbox title="计算并向控制台输出 1024 * 768 = ???" />

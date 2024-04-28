@@ -1,0 +1,5 @@
+# ignore mdx files
+**/*.mdx
+
+# ignore built files
+.next/*

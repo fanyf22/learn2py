@@ -1,0 +1,49 @@
+.get_started {
+  display: inline-block;
+  background: linear-gradient(to bottom, #238aff, #0077ff);
+  text-decoration: none;
+  border-radius: 9999px;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 1px #00387838;
+  box-shadow: 0 1px 2px #00295738;
+  transition: all 0.2s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1.3rem;
+}
+
+.get_started span {
+  display: inline-block;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.get_started:hover span {
+  transform: translateX(5px);
+}
+
+.get_started:hover {
+  box-shadow: 0 5px 30px -10px #0078ffab;
+  filter: brightness(1.05);
+}
+
+.get_started:active {
+  box-shadow: 0 1px 3px #00295738;
+  filter: brightness(0.95);
+}
+
+a.get_started:active span {
+  transform: translateX(5px);
+}
+
+a.get_started:focus-visible {
+  outline: 2px solid hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) 77%);
+  outline-offset: 2px;
+}
+
+a.get_started:focus-visible span {
+  transform: translateX(3px);
+}

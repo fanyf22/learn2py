@@ -1,20 +1,32 @@
 {
   "name": "learn2py",
   "version": "0.1.0",
+  "description": "Website for Python beginners",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 10300",
+    "lint": "next lint; prettier --write ."
   },
   "dependencies": {
+    "ace-builds": "^1.33.1",
+    "antd": "^5.16.4",
+    "next": "14.2.3",
+    "next-themes": "^0.3.0",
+    "nextra": "^3.0.0-alpha.22",
+    "nextra-theme-docs": "^3.0.0-alpha.22",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "raw-loader": "^4.0.2",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
+    "react-ace": "^11.0.1",
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
     "postcss": "^8",
+    "prettier": "3.2.5",
     "tailwindcss": "^3.4.1"
   }
 }

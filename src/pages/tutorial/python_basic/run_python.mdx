@@ -1,0 +1,54 @@
+import { Callout } from 'nextra/components'
+
+# 运行 Python 代码
+
+<Callout type="warning">
+  在写代码之前，请**千万不要**将代码直接复制到你的电脑上。在写代码的过程中，初学者经常会写错代码：拼写不对、大小写不对、混用中英文标点、混用空格和
+  Tab
+  键等等。所以，你需要自己动手写代码，并仔细地检查、对照，才能以最快的速度掌握如何写程序。
+</Callout>
+
+## 在 IDLE 中运行代码
+
+在 IDLE 中输入代码并按回车就可以立刻得到执行结果。
+
+现在，试一试输入 `100 + 200{:python}`，看看结果是不是 `300{:python}`。
+
+```python
+>>> 100 + 200
+300
+```
+
+任何有效的数学计算都可以直接被算出来。
+
+如果要让 Python 输出指定文字，可以用 `print(){:python}` 函数，然后把希望打印的文字用单引号或双引号括起来，注意不能混用单引号和双引号：
+
+```python
+>>> print('Hello, world!')
+Hello, world!
+```
+
+## 将代码写在文件中
+
+使用 IDLE 执行代码固然方便，但是每次只能执行一条代码，并且无法修改执行过的代码，也无法保存。
+
+因此，只要不是特别简单的程序或是出于测试目的的临时代码，一般都会写在文件中。
+
+在 IDLE 的菜单栏中找到 `File > New File` 来创建一个新文件，并保存为 `helloworld.py`。
+
+为了方便管理，建议建立一个固定的文件夹保存所有 Python 文件。
+
+现在在弹出的编辑器中写入下列代码并保存：
+
+```python filename="helloworld.py"
+print('Hello, world!')
+print('Congratulations!')
+```
+
+在菜单栏中点击 `Run > Run Module`，或者使用快捷键 `F5` 运行代码，查看输出。
+
+```text
+=============== RESTART: /Users/orthopole/Documents/helloworld.py ==============
+Hello, world!
+Congratulations!
+```
