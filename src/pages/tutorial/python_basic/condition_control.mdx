@@ -1,0 +1,174 @@
+import Sandbox from '@/components/sandbox'
+import { Callout } from 'nextra/components'
+import if_else_statement from 'raw-loader!./if-else-statement.py'
+import if_else_statement_with_indent from 'raw-loader!./if-else-statement-with-indent.py'
+import nested_if_else_statement from 'raw-loader!./nested-if-else-statement.py'
+import use_greater_lower_statement from 'raw-loader!./use-greater-lower-statement.py'
+import use_and_or_statement from 'raw-loader!./use-and-or-statement.py'
+
+# 条件控制
+
+允许使用条件控制代码流程是图灵完备的必要条件。
+
+在很多时候，我们需要根据用户的输入、运算结果等不确定因素决定接下来要干什么。
+
+## if-else 语句
+
+尝试更改 `age{:python}` 的值并运行以下代码：
+
+<Sandbox title="if else 语句" value={if_else_statement} />
+
+<Callout>记得将这段代码打在自己的电脑上并运行，或者删掉上面的代码自己打一遍。</Callout>
+
+### 缩进
+
+这段代码很好理解，不过需要注意的是这里出现的一个新的概念：缩进。
+
+在 `if` 和 `else` 语句之后，代码都空出了 4 个空格，这便是一个缩进。
+
+缩进在 Python 中的主要作用是标志一个代码块的结束。
+
+分别尝试在最后一行有缩进和没有缩进的情况下运行：
+
+<Sandbox title="缩进" value={if_else_statement_with_indent} />
+
+### 嵌套
+
+对于需要嵌套条件语句的场景，就需要用连续缩进来区分不同层级的代码块：
+
+<Sandbox title="嵌套语句" value={nested_if_else_statement} />
+
+### 空格与 Tab
+
+Tab 是制表符，其作用是将光标位置调整为下一个 8 的倍数（或者在大部分 IDE 里是 4 的倍数）。
+
+也就是说，其相当于一段空白文本，长度等于到下一个 4 的倍数的位置的距离。
+
+Python 的缩进理论上只考虑缩进使用的字符是否一致，所以用 Tab 或者 4 个空格，甚至任意多个空格都可以。
+
+PEP8 规范要求统一使用 4 个空格或者 Tab，并且考虑到 Tab 在不同地方显示不同（有些地方时 4 空格有些地方是 8 空格），因此强烈建议统一使用 4 空格进行缩进。
+
+在大部分主流 IDE 都会自动用空格代替 Tab（即按下 Tab 后将其转化为相应的空格数量）。
+
+你可以尝试在 IDLE 中使用 Tab 进行缩进，看看是不是转化为了空格。
+
+### 语句
+
+Python 中的语句都以 `:{:python}` 结尾，标志着流程控制的开始。
+
+所以记得不要漏掉这个 `:{:python}`，否则 Python 就无法识别语法而报错了。
+
+### 省略 else
+
+有时候你根本不需要在 `else{:python}` 下进行执行代码，这时候你可以直接省略 `else{:python}`。
+
+现在你可以尝试删除 `else:{:python}` 以及之后的代码块：
+
+<Sandbox title="省略 else" value={if_else_statement_with_indent} />
+
+注意，最后一行不属于 `else{:python}` 的代码块，不可以删去。
+
+## if-elif-else 语句
+
+我们刚刚在嵌套语句中举了一个在 `if{:python}` 语句中使用 `if{:python}` 的例子。
+
+这种语句实际上很不友好，既不符合人类思考习惯，也容易造成缩进地狱，比如：
+
+```python
+name = 'Alice'
+
+if name == 'John':
+    print('Hello, John')
+else:
+    if name == 'Bob':
+        print('Hello, Bob')
+    else:
+        if name == 'Jack':
+            print('Hello, Jack')
+        else:
+            if name == 'Alice':
+                print('Hello, Alice')
+            else:
+                print('Hello')
+```
+
+本来看起来平级却出现在了不同的缩进下。
+
+为了解决这个问题，Python 引入了 `elif{:python}` 语句，将上面的代码改为：
+
+```python
+name = 'Alice'
+
+if name == 'John':
+    print('Hello, John')
+elif name == 'Bob':
+    print('Hello, Bob')
+elif name == 'Jack':
+    print('Hello, Jack')
+elif name == 'Alice':
+    print('Hello, Alice')
+else:
+    print('Hello')
+```
+
+同样地，最后的 `else{:python}` 语句可以省略。
+
+## 布尔类型
+
+说到条件控制，就不得不提对应的布尔类型了。
+
+与其他类型不同，布尔类型只有两个取值：`True{:python}` 和 `False{:python}`。
+
+刚才所有 `if` 语句中的条件实际上就是一个计算结果为布尔类型的表达式。
+
+### 数学表达式
+
+最常见的条件就是数学中的判断运算，比如大小于，这些运算都很容易在 Python 中实现。
+
+特别地，等于是 `==`，不等于是 `!=`。
+
+现在尝试更改 if-else 语句的条件：
+
+<Sandbox title="使用数学判断" value={use_greater_lower_statement} />
+
+<Callout type="warning">等于是 `==` 而不是 `=`，新手很容易少打一个 `=` 而产生错误。</Callout>
+
+### 逻辑表达式
+
+如果不能用单个数学表达式描述条件，那么可能就需要逻辑表达式来帮忙了。
+
+Python 支持两个二元逻辑表达式：`and` 和 `or`，以及一个一元逻辑表达式 `not`。
+
+<Sandbox title="使用逻辑判断" value={use_and_or_statement} />
+
+注意运算优先级，`not` 优先于 `and` 和 `or`。
+
+### 保存到变量
+
+布尔值也是一种数据，你可以将其保存到变量：
+
+```python
+cond = 1 == 2
+
+if cond:
+    print('The statement is true.')
+else:
+    print('The statement is false.')
+```
+
+你甚至可以输出布尔值：
+
+<Sandbox title="输出布尔值" value={"print('1 == 2 is', 1 == 2)\n"} />
+
+这里新手容易犯的一个错误是，即使已经得到了布尔值，依然尝试用 `==` 作判断：
+
+```python
+cond = 1 == 2
+
+if cond == True:
+    print('The statement is true.')
+else:
+    print('The statement is false.')
+```
+
+这样做不会有问题，但是完全没有必要。
