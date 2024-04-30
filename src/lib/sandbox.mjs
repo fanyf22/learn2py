@@ -36,5 +36,13 @@ export default function sandbox_plugin() {
         ]
       }
     })
+
+    visit(tree, 'inlineCode', (node) => {
+      if (node.value.endsWith('{}')) {
+        node.value = node.value.slice(0, node.value.length - 2)
+      } else if (!/.*\{:\w*}/.test(node.value)) {
+        node.value = `${node.value}{:python}`
+      }
+    })
   }
 }

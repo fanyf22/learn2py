@@ -1,0 +1,28 @@
+import SandBox from '@/components/sandbox'
+
+# 集合类
+
+顾名思义，集合类就是数学中的集合，元素具有唯一性且没有顺序。
+
+集合类不太常用，所以这里给一个代码示例自行学习：
+
+```python sandbox
+# 集合类的使用
+A = {1, 2, 3}
+B = {1, 4, 5}
+print(A)                    # {1, 2, 3}
+print(B)                    # {1, 4, 5}
+print(A.union(B))           # {1, 2, 3, 4, 5}
+print(A.intersection(B))    # {1}
+print(A.difference(B))      # {2, 3}
+print(A.issubset(B))        # False
+A.add(6)
+print(A)                    # {1, 2, 3, 6}
+A.remove(2)
+print(A)                    # {1, 3, 6}
+for x in A:
+    print(x, end='')        # 136
+print()
+print(A.pop())
+print(A)
+```

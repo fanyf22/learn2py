@@ -1,0 +1,129 @@
+import SandBox from '@/components/sandbox'
+import { Callout } from 'nextra/components'
+
+# 循环控制
+
+这是本教程出现的第二种语句：循环。
+
+顾名思义，循环就是让同一段代码反复执行。
+
+Python 提供了多种不同的循环语句方便在各个场景中快速使用。
+
+## while 循环
+
+这是最基本的循环语句，在几乎所有编程语言里都有，理论上使用 `while` 可以实现任意循环。
+
+在运行下列代码之前先预测一下运行结果吧。
+
+```python sandbox
+# while 循环
+x = 0
+
+while x < 5:
+    x = x + 1
+    print('x =', x)
+```
+
+自然地，`while` 就是在后面的条件满足时运行一次循环，否则就退出。
+
+<Callout type="warning">
+  条件的检测只在每一次循环之前，在循环过程中即使条件不满足了也不会自己退出。
+</Callout>
+
+在上面的代码中，第五个循环时 `x = x + 1` 让 `x` 变为了 `5`，但是依旧执行了 `print()` 函数。
+
+## for 循环
+
+使用 `while` 循环让 `x` 遍历 `1-5` 中的数比较麻烦，`for` 循环可以让代码看起来更简洁直观：
+
+```python sandbox
+# for 循环
+for x in range(1, 6):
+    print('x =', x)
+```
+
+注意，`range(1, 6)` 中的 `6` 代表遍历到 `6` 就停止，因此实际上最后一次循环是 `x = 5`。
+
+事实上，`range` 还接受第三个参数，表示每次遍历的步进，例如
+
+```python sandbox
+# range 遍历
+for x in range(1, 6, 2):
+  print('x =', x)
+```
+
+你还可以将步进设为负数，这时候 `x` 的值会递减：
+
+```python sandbox
+# range 遍历
+for x in range(1, -4, -2):
+  print('x =', x)
+```
+
+但是步进不可以为 `0`，会报错：
+
+```python sandbox
+# range 遍历
+for x in range(1, 6, 0):
+  print('x =', x)
+```
+
+如果起始值为 `0`，那么可以省略，例如：
+
+```python sandbox
+# 省略起始值
+for x in range(6):
+    print('x =', x)
+```
+
+## 控制循环流程
+
+Python 还提供了两条命令用于手动控制循环流程：`break` 和 `continue`。
+
+`break` 的作用是退出整个循环，而 `continue` 则是退出这一次循环。
+
+```python sandbox
+# break
+for x in range(6):
+    if x == 4:
+        break
+    print('x =', x)
+```
+
+```python sandbox
+# continue
+for x in range(6):
+    if x == 4:
+        continue
+    print('x =', x)
+```
+
+## 嵌套语句
+
+语句之间都可以相互嵌套，所以之前学过的条件语句和循环语句可以用任意方式组合在一起，比如：
+
+```python sandbox
+# 嵌套语句
+age = 20
+
+if age >= 18:
+    for x in range(age):
+        if x == 18:
+            continue
+        print('x =', x)
+else:
+    for x in range(age):
+        if x == 10:
+            break
+        print('x =', x)
+```
+
+注意，如果有嵌套循环，并使用了 `break` 和 `continue`，那么这条命令控制的是最里层的循环，比如
+
+```python sandbox
+for x in range(3):          # 外层循环
+    for y in range(x):      # 里层循环
+        if y == 0:
+            continue        # 控制里层循环
+        print(x, y)
+```

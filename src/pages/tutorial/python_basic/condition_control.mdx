@@ -9,7 +9,7 @@ import { Callout } from 'nextra/components'
 
 ## if-else 语句
 
-尝试更改 `age{:python}` 的值并运行以下代码：
+尝试更改 `age` 的值并运行以下代码：
 
 ```python sandbox
 # if else 语句
@@ -21,7 +21,9 @@ else:
     print('You are a child.')
 ```
 
-<Callout>记得将这段代码打在自己的电脑上并运行，或者删掉上面的代码自己打一遍。</Callout>
+<Callout>
+  记得将这段代码打在自己的电脑上并运行，或者删掉上面的代码自己打一遍。
+</Callout>
 
 ### 缩进
 
@@ -77,15 +79,15 @@ PEP8 规范要求统一使用 4 个空格或者 Tab，并且考虑到 Tab 在不
 
 ### 语句
 
-Python 中的语句都以 `:{:python}` 结尾，标志着流程控制的开始。
+Python 中的语句都以 `:` 结尾，标志着流程控制的开始。
 
-所以记得不要漏掉这个 `:{:python}`，否则 Python 就无法识别语法而报错了。
+所以记得不要漏掉这个 `:`，否则 Python 就无法识别语法而报错了。
 
 ### 省略 else
 
-有时候你根本不需要在 `else{:python}` 下进行执行代码，这时候你可以直接省略 `else{:python}`。
+有时候你根本不需要在 `else` 下进行执行代码，这时候你可以直接省略 `else`。
 
-现在你可以尝试删除 `else:{:python}` 以及之后的代码块：
+现在你可以尝试删除 `else:` 以及之后的代码块：
 
 ```python sandbox
 # 省略 else
@@ -98,11 +100,11 @@ else:
 print('Your age is', age)
 ```
 
-注意，最后一行不属于 `else{:python}` 的代码块，不可以删去。
+注意，最后一行不属于 `else` 的代码块，不可以删去。
 
 ## if-elif-else 语句
 
-我们刚刚在嵌套语句中举了一个在 `if{:python}` 语句中使用 `if{:python}` 的例子。
+我们刚刚在嵌套语句中举了一个在 `if` 语句中使用 `if` 的例子。
 
 这种语句实际上很不友好，既不符合人类思考习惯，也容易造成缩进地狱，比如：
 
@@ -126,7 +128,7 @@ else:
 
 本来看起来平级却出现在了不同的缩进下。
 
-为了解决这个问题，Python 引入了 `elif{:python}` 语句，将上面的代码改为：
+为了解决这个问题，Python 引入了 `elif` 语句，将上面的代码改为：
 
 ```python
 name = 'Alice'
@@ -143,13 +145,13 @@ else:
     print('Hello')
 ```
 
-同样地，最后的 `else{:python}` 语句可以省略。
+同样地，最后的 `else` 语句可以省略。
 
 ## 布尔类型
 
 说到条件控制，就不得不提对应的布尔类型了。
 
-与其他类型不同，布尔类型只有两个取值：`True{:python}` 和 `False{:python}`。
+与其他类型不同，布尔类型只有两个取值：`True` 和 `False`。
 
 刚才所有 `if` 语句中的条件实际上就是一个计算结果为布尔类型的表达式。
 
@@ -169,7 +171,7 @@ else:
     print('The statement is false.')
 ```
 
-<Callout type="warning">等于是 `==` 而不是 `=`，新手很容易少打一个 `=` 而产生错误。</Callout>
+<Callout type="warning">等于是 `=={}` 而不是 `={}`，新手很容易少打一个 `={}` 而产生错误。</Callout>
 
 ### 逻辑表达式
 

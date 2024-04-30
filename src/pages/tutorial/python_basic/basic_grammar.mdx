@@ -4,7 +4,7 @@ import SandBox from '@/components/sandbox'
 
 ## 输出运算结果
 
-新建一个名为 `calc.py` 的文件，并输入以下内容：
+新建一个名为 `calc.py{}` 的文件，并输入以下内容：
 
 ```python filename="calc.py"
 100 + 200
@@ -12,7 +12,7 @@ import SandBox from '@/components/sandbox'
 
 尝试运行一下。
 
-是不是很奇怪？明明刚才在 IDLE 执行代码时会输出 `300{:python}`，现在却什么都没输出？
+是不是很奇怪？明明刚才在 IDLE 执行代码时会输出 `300`，现在却什么都没输出？
 
 这是因为 IDLE 的交互模式下会自动输出运算结果，但是如果是执行程序就只能通过 `print()` 函数来输出。
 
@@ -28,7 +28,7 @@ print(100 + 200)
 
 这时候，我们就需要用变量来存储运算的结果。
 
-修改 `calc.py` 的代码如下并尝试运行：
+修改 `calc.py{}` 的代码如下并尝试运行：
 
 ```python filename="calc.py"
 x = 100 + 200
@@ -40,7 +40,7 @@ print(x)
 * 仅包含字母、数字、`_` 这几种字符（特别注意不能有空格）。
 * 不能以数字开头，即只能以字母或 `_` 开头。
 
-尝试给 `x`、`hello_world`、`_123abc`、`1a2b3c`、`I.am.Jack` 以及其他变量名赋值，看看效果：
+尝试给 `x{}`、`hello_world{}`、`_123abc{}`、`1a2b3c{}`、`I.am.Jack{}` 以及其他变量名赋值，看看效果：
 
 ```python sandbox
 # 尝试给变量赋值
@@ -54,7 +54,7 @@ print('It is a legal variable name.')
 
 在 Python 中最直接的输入方式就是在运行过程中让用户直接打字输入。
 
-新建一个名为 `input.py` 的文件，输入以下内容并运行：
+新建一个名为 `input.py{}` 的文件，输入以下内容并运行：
 
 ```python filename="input.py"
 name = input('Please enter your name: ')
@@ -74,9 +74,9 @@ Hello, Jack
 
 我们已经知道 `print()` 可以输出内容到控制台。
 
-在刚才的代码中，我们用 `print('Hello,', name){:python}` 在一行内输出了多个内容。
+在刚才的代码中，我们用 `print('Hello,', name)` 在一行内输出了多个内容。
 
-从结果来看，`'Hello,'{:python}` 和 `name{:python}` 之间有一个空格分隔开来。
+从结果来看，`'Hello,'` 和 `name` 之间有一个空格分隔开来。
 
 现在尝试用 `print()` 函数在一行内输出三个内容：
 
@@ -100,3 +100,19 @@ print('Hello', 'world', '!', sep='', end='')
 ```python sandbox
 # 计算并向控制台输出 1024 * 768 = ???
 ```
+
+## 为你的代码添加注释
+
+代码不总是简单易懂的，在必要的时候需要为自己的代码添加一些注解，方便自己和别人查看。
+
+但是注解不是代码，不能被 Python 理解和运行，因此需要添加记号让 Python 忽略掉这些注解。
+
+在 Python 中，`#` 之后的文字均为注释，不会被 Python 解释器所阅读，例如：
+
+```python
+# 注释既可以独占整行
+print('1 + 2 =', 1 + 2)     # 也可以在一行的末尾
+print('Hello, Jack')        # 多行连续注释建议用 Tab 对齐
+```
+
+添加注释是一个好习惯，建议写代码的时候多写注释。

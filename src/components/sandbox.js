@@ -16,6 +16,8 @@ import 'ace-builds/src-noconflict/ext-language_tools'
  * @constructor
  */
 export default function SandBox({ title = '测试代码', value = '' }) {
+  value = decodeURIComponent(value)
+
   const { resolvedTheme } = useTheme()
   const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -76,9 +78,9 @@ export default function SandBox({ title = '测试代码', value = '' }) {
       mode="python"
       theme={isDarkMode ? 'monokai' : 'github'}
       lineHeight="1.6em"
-      minLines={10}
-      maxLines={16}
-      defaultValue={decodeURIComponent(value)}
+      minLines={12}
+      maxLines={24}
+      defaultValue={value}
       editorProps={{ $blockScrolling: true }}
       setOptions={{
         enableBasicAutocompletion: true,

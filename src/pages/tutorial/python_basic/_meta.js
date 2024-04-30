@@ -4,4 +4,5 @@ export default {
   basic_grammar: '基础 Python 语法',
   useful_knowledge: '代码规范与 PEP',
   condition_control: '条件控制',
+  loop_control: '循环控制',
 }
