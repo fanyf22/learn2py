@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bf5fd7cc-6992-4d53-aef4-58797a43ca66" name="Learn2Py" url="https://learn2py.topfyf.cn">
+        <fileTransfer rootFolder="/home/server/learn2py" accessType="SFTP" host="1.15.36.71" port="22" sshConfigId="56d7f1c4-a73e-4c38-8302-8dec4687a1ea" sshConfig="server@1.15.36.71:22 agent" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,10 +1,5 @@
-import Sandbox from '@/components/sandbox'
+import SandBox from '@/components/sandbox'
 import { Callout } from 'nextra/components'
-import if_else_statement from 'raw-loader!./if-else-statement.py'
-import if_else_statement_with_indent from 'raw-loader!./if-else-statement-with-indent.py'
-import nested_if_else_statement from 'raw-loader!./nested-if-else-statement.py'
-import use_greater_lower_statement from 'raw-loader!./use-greater-lower-statement.py'
-import use_and_or_statement from 'raw-loader!./use-and-or-statement.py'
 
 # 条件控制
 
@@ -16,7 +11,15 @@ import use_and_or_statement from 'raw-loader!./use-and-or-statement.py'
 
 尝试更改 `age{:python}` 的值并运行以下代码：
 
-<Sandbox title="if else 语句" value={if_else_statement} />
+```python sandbox
+# if else 语句
+age = 20
+
+if age >= 18:
+    print('You are an adult.')
+else:
+    print('You are a child.')
+```
 
 <Callout>记得将这段代码打在自己的电脑上并运行，或者删掉上面的代码自己打一遍。</Callout>
 
@@ -30,13 +33,33 @@ import use_and_or_statement from 'raw-loader!./use-and-or-statement.py'
 
 分别尝试在最后一行有缩进和没有缩进的情况下运行：
 
-<Sandbox title="缩进" value={if_else_statement_with_indent} />
+```python sandbox
+# 缩进
+age = 20
+
+if age >= 18:
+    print('You are an adult.')
+else:
+    print('You are a child.')
+print('Your age is', age)
+```
 
 ### 嵌套
 
 对于需要嵌套条件语句的场景，就需要用连续缩进来区分不同层级的代码块：
 
-<Sandbox title="嵌套语句" value={nested_if_else_statement} />
+```python sandbox
+# 嵌套语句
+age = 20
+
+if age >= 60:
+    print('You are an old man.')
+else:
+    if age >= 18:
+        print('You are an adult.')
+    else:
+        print('You are a child.')
+```
 
 ### 空格与 Tab
 
@@ -64,7 +87,16 @@ Python 中的语句都以 `:{:python}` 结尾，标志着流程控制的开始�
 
 现在你可以尝试删除 `else:{:python}` 以及之后的代码块：
 
-<Sandbox title="省略 else" value={if_else_statement_with_indent} />
+```python sandbox
+# 省略 else
+age = 20
+
+if age >= 18:
+    print('You are an adult.')
+else:
+    print('You are a child.')
+print('Your age is', age)
+```
 
 注意，最后一行不属于 `else{:python}` 的代码块，不可以删去。
 
@@ -129,7 +161,13 @@ else:
 
 现在尝试更改 if-else 语句的条件：
 
-<Sandbox title="使用数学判断" value={use_greater_lower_statement} />
+```python sandbox
+# 使用数学判断
+if 1 + 2 > 3:
+    print('The statement is true.')
+else:
+    print('The statement is false.')
+```
 
 <Callout type="warning">等于是 `==` 而不是 `=`，新手很容易少打一个 `=` 而产生错误。</Callout>
 
@@ -139,7 +177,13 @@ else:
 
 Python 支持两个二元逻辑表达式：`and` 和 `or`，以及一个一元逻辑表达式 `not`。
 
-<Sandbox title="使用逻辑判断" value={use_and_or_statement} />
+```python sandbox
+# 使用逻辑判断
+if not 1 + 2 > 3 and 2 + 3 > 4:
+    print('The statement is true.')
+else:
+    print('The statement is false.')
+```
 
 注意运算优先级，`not` 优先于 `and` 和 `or`。
 
@@ -158,7 +202,10 @@ else:
 
 你甚至可以输出布尔值：
 
-<Sandbox title="输出布尔值" value={"print('1 == 2 is', 1 == 2)\n"} />
+```python sandbox
+# 输出布尔值
+print('1 == 2 is', 1 == 2)
+```
 
 这里新手容易犯的一个错误是，即使已经得到了布尔值，依然尝试用 `==` 作判断：
 

@@ -1,5 +1,4 @@
-import { Callout } from 'nextra/components'
-import Sandbox from '@/components/sandbox'
+import SandBox from '@/components/sandbox'
 
 # 基础 Python 语法
 
@@ -43,7 +42,11 @@ print(x)
 
 尝试给 `x`、`hello_world`、`_123abc`、`1a2b3c`、`I.am.Jack` 以及其他变量名赋值，看看效果：
 
-<Sandbox title="尝试给变量赋值" value={"x = 1\nprint('It is a legal variable name.')\n"} />
+```python sandbox
+# 尝试给变量赋值
+x = 1
+print('It is a legal variable name.')
+```
 
 ## 从交互中获取变量
 
@@ -77,7 +80,9 @@ Hello, Jack
 
 现在尝试用 `print()` 函数在一行内输出三个内容：
 
-<Sandbox title="使用 print 函数输出三个内容" />
+```python sandbox
+# 使用 print 函数输出三个内容
+```
 
 如果你想要输出多个内容，但是不想用空格分开它们，你可以传入 `sep` 参数。
 
@@ -85,11 +90,13 @@ Hello, Jack
 
 尝试改变下面代码中 `sep` 参数和 `end` 参数的值，看看输出结果：
 
-<Sandbox
-  title="使用 sep 和 end 参数"
-  value={"print('Hello', 'world', '!', sep='', end='')\n"}
-/>
+```python sandbox
+# 使用 sep 和 end 参数
+print('Hello', 'world', '!', sep='', end='')
+```
 
 现在练习一下，计算并向控制台输出 `1024 * 768 = ???`。
 
-<Sandbox title="计算并向控制台输出 1024 * 768 = ???" />
+```python sandbox
+# 计算并向控制台输出 1024 * 768 = ???
+```

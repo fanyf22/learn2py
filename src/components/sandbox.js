@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Button, Card } from 'antd'
-import AceEditor from 'react-ace'
 import { useTheme } from 'nextra-theme-docs'
+import { Card, Button } from 'antd'
+import AceEditor from 'react-ace'
 
-import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/theme-github'
 import 'ace-builds/src-noconflict/theme-monokai'
+import 'ace-builds/src-noconflict/mode-python'
+import 'ace-builds/src-noconflict/ext-beautify'
+import 'ace-builds/src-noconflict/ext-language_tools'
 
 /**
  * @param {string} title
@@ -13,7 +15,7 @@ import 'ace-builds/src-noconflict/theme-monokai'
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Sandbox({ title = '测试代码', value = '' }) {
+export default function SandBox({ title = '测试代码', value = '' }) {
   const { resolvedTheme } = useTheme()
   const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -76,7 +78,7 @@ export default function Sandbox({ title = '测试代码', value = '' }) {
       lineHeight="1.6em"
       minLines={10}
       maxLines={16}
-      defaultValue={value}
+      defaultValue={decodeURIComponent(value)}
       editorProps={{ $blockScrolling: true }}
       setOptions={{
         enableBasicAutocompletion: true,
