@@ -22,6 +22,7 @@ export default {
   toc: { title: '目录', backToTop: true },
   editLink: { content: '在 GitHub 上编辑此页' },
   feedback: { content: '有任何疑问？在这里反馈', labels: 'feedback' },
+  sidebar: { autoCollapse: true, defaultMenuCollapseLevel: 1 },
   footer: {
     content: (
       <span>

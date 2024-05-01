@@ -1,0 +1,135 @@
+import SandBox from '@/components/sandbox'
+
+# 字典类
+
+字典类是一个非常常用的类，可以保存若干键值对，然后通过键获取相应的值。
+
+## 字典的定义和读取
+
+### 创建字典
+
+```python sandbox
+d = {'x': 1, 2: 3, False: 4}
+print(d)
+```
+
+你可以将字典理解为一个映射：
+
+```python
+'x'   -> 1
+2     -> 3
+False -> 4
+```
+
+### 键与值
+
+字典由若干键值对构成，`'x': 1` 中 `x` 为键、`1` 为值。
+
+要获取一个键对应的值，可以使用和列表索引相同的方式：
+
+```python sandbox
+d = {'x': 1, 2: 3, False: 4}
+print(d['x'])
+```
+
+### 字典长度
+
+和列表一样，使用 `len()` 函数来获取字典长度：
+
+```python
+print(len({'x': 1, 'y': 2}))
+```
+
+### 从属关系
+
+列表的从属关系针对的是元素，而字典的从属关系针对的是键：
+
+```python sandbox
+# 从属关系
+d = {'x': 1, 'y': 2}
+print('x' in d)
+print('y' not in d)
+print(1 in d)
+```
+
+### 遍历列表
+
+使用 `for` 循环可以遍历列表的键：
+
+```python sandbox
+# 遍历列表
+d = {'x': 1, 'y': 2}
+
+for key in d:
+    print(key, d[key])
+```
+
+要同时遍历键和值，你可以
+
+```python sandbox
+# 遍历列表
+d = {'x': 1, 'y': 2}
+
+for key, value in d.items():
+    print(key, value)
+```
+
+只要遍历值，你可以：
+
+```python sandbox
+# 遍历列表
+d = {'x': 1, 'y': 2}
+
+for value in d.values():
+    print(key, value)
+```
+
+事实上，列表提供了三个方法：`keys()`、`values()`、`items()`，均为列表。
+
+## 字典的修改与操作
+
+### 修改字典
+
+和列表一样，直接使用 `[]` 加上赋值来修改字典：
+
+```python
+d = {'x': 1, 'y': 2}
+d['x'] = 3
+```
+
+和列表不同，你可以通过赋值添加新的键：
+
+```python
+d = {'x': 1, 'y': 2}
+d['z'] = 3
+```
+
+### 操作字典
+
+字典的操作没有列表那么多，主要就是 `pop()` 和 `popitem()`：
+
+```python sandbox
+d = {'x': 1, 'y': 2, 'z': 3}
+print(d.pop('x'))
+print(d)
+print(d.popitem())
+print(d)
+```
+
+`pop()` 可以删除指定的项，返回对应值，而 `popitem()` 可以删除某一项，返回键值对。
+
+## 实战训练
+
+补全下列代码，将字典 `b` 的键值对添加到 `a` 中，但是如果 `a` 中已经有该键了，那么不要将 `b` 的值覆盖到 `a`。
+
+```python sandbox
+a = {'x': 1, 'y': 2, 'z': 3}
+b = {'x': 2, 'w': 4, 's': 5}
+print(a)
+print(b)
+
+# 将 b 合并到 a
+
+
+print(a)
+```

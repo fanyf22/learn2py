@@ -1,0 +1,88 @@
+import SandBox from '@/components/sandbox'
+import { Calligraffitti } from 'next/dist/compiled/@next/font/dist/google'
+import { Callout } from 'nextra/components'
+
+# 元组
+
+元组和列表一样，也是描述一个序列的，但是其存在的意义和列表不同。
+
+## 创建元组
+
+使用 `()` 包裹 `,` 分隔的表达式创建元组：
+
+```python
+x = (1, 2, 3)
+```
+
+如果元组只有一项，那么需要在元素后加上 `,` 以和数学的 `()` 区分：
+
+```python
+x = (1,)
+```
+
+创建元组的 `()` 可以省略，也就是：
+
+```python
+x = 1, 2, 3
+y = 1,
+```
+
+## 访问元组
+
+和列表一样，你可以用索引访问元组：
+
+```python
+x = 1, 2, 3
+print(x[2])
+```
+
+但是元组不支持通过索引修改。事实上，元组创建后就不可以被改变了。
+
+## 解包元组
+
+元组的一个好处就是可以直接解包，而不用一项一项索引获取：
+
+```python
+x, y, z = 1, 2, 3
+print(x, y, z)
+```
+
+请你用元组的解包特性来写一个将变量 `x` 和 `y` 的值交换的代码：
+
+```python sandbox
+# 解包交换
+x = 1
+y = 2
+
+# 交换 x 和 y
+
+
+print(f'x = {x} and y = {y}')
+```
+
+在别的语言中，通常需要引入第三个变量来交换两个变量的值。相比之下 Python 的解包写法更加简洁直接。
+
+还记得之前提到过的 `enumerate` 吗？
+
+```python
+arr = [2, 3, 5, 7, 11, 13]
+
+for i, value in enumerate(arr):
+    print(i, value)
+```
+
+这里 `for` 可以同时赋值 `i` 和 `value` 就是因为 `enumerate` 是由元组组成的列表，使用 `i, value` 可以从元组中解包出索引和值。
+
+## 其他用法
+
+<Callout type="warning">
+  再次强调，元组一经创建无法修改。
+</Callout>
+
+元组只有两个方法可以使用：`count()` 和 `index()`，和列表一样，就不多赘述了。
+
+## 和列表的区别
+
+事实上，列表也可以解包，所以元组的功能事实上是列表的子集。
+
+Python 设计元组的目的在于，解包特性通常用在长度固定的列表上，并且这个列表不需要进行修改，所以专门设计元组可以优化其算法，提升程序运行性能。

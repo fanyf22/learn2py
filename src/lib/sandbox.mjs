@@ -44,5 +44,14 @@ export default function sandbox_plugin() {
         node.value = `${node.value}{:python}`
       }
     })
+
+    visit(tree, 'link', (node) => {
+      if (node.children.length == 0) {
+        node.children.push({
+          type: 'text',
+          value: node.url,
+        })
+      }
+    })
   }
 }

@@ -4,7 +4,7 @@ import { name } from '@/lib/global'
 import { useEffect, useState } from 'react'
 
 /**
- * @param {React.CSSProperties<Image>} props
+ * @param props
  * @returns {JSX.Element}
  * @constructor
  */
