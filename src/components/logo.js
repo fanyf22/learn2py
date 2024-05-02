@@ -16,5 +16,15 @@ export function Logo({ ...props }) {
     setSRC(resolvedTheme == 'light' ? '/logo.svg' : '/logo_dark.svg')
   }, [resolvedTheme])
 
-  return <Image src={src} alt={name} width={208} height={33} {...props} />
+  return (
+    <Image
+      src={src}
+      alt={name}
+      width={208}
+      height={33}
+      priority
+      fetchpriority="high"
+      {...props}
+    />
+  )
 }
