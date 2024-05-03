@@ -26,7 +26,7 @@ export default {
   footer: {
     content: (
       <span>
-        Apache {new Date().getFullYear()} ©{author}.
+        Apache2 {new Date().getFullYear()} ©{author}.
       </span>
     ),
   },

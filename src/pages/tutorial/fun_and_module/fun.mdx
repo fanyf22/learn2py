@@ -1,0 +1,225 @@
+import SandBox from '@/components/sandbox'
+
+# 函数
+
+我们已经见过许多函数了，比如 `print()`。本节就来讨论函数究竟是什么，以及如何创建一个函数。
+
+## 使用函数
+
+### 结构
+
+函数主要分为两部分：函数名和参数列表。我们考虑下列代码：
+
+```python
+print('Hello', 'world', '!', sep=' ', end='\n')
+```
+
+函数名是 `print` 而参数列表是 `'Hello', 'world', '!', sep=' ', end='\n'`。
+
+参数用 `,` 分隔构成参数列表，因此 `print` 函数接受到了 5 个参数。
+
+### 参数
+
+传递给函数的参数分为两类：位置参数和关键字参数。继续考察 `print` 函数的调用：
+
+```python
+print('Hello', 'world', '!', sep=' ', end='\n')
+```
+
+这里，`Hello`、`world`、`'!'` 就是位置参数，而 `sep=' '`、`end='\n'` 就是关键字参数。
+
+可能你已经反应过来了，只有一个值的就是位置参数，而形如 `???=` 的就是关键字参数。
+
+在函数调用时，位置参数是有顺序的，而关键字参数则是没有顺序的，不过必须放在位置参数之后。
+
+## 定义函数
+
+虽然使用内置的函数可以解决任何问题，但是如果你需要反复使用某段代码，就可以将其写成函数，这样不需要每次都重复一遍了。避免使用重复的代码是编程时的一个好习惯。
+
+首先先看一下代码示例：
+
+```python
+def fun(x, y, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+```
+
+怎么样，是不是感觉很简单？现在尝试调用一下这个函数吧：
+
+```python sandbox
+def fun(x, y, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+
+fun(1, 2, 3)
+```
+
+现在试试看使用关键字参数类传递参数：
+
+```python sandbox
+def fun(x, y, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+
+# 尝试将 y 也用关键字参数传递
+fun(1, 2, z=3)
+```
+
+### 加入返回值
+
+现在我们尝试让函数返回一个值：
+
+```python
+def fun(x, y, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+    return x + y + z
+```
+
+尝试获取一下这个返回值吧：
+
+```python sandbox
+def fun(x, y, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+    return x + y + z
+
+print('x + y + z =', fun(1, 2, 3))
+```
+
+注意，函数 `return` 之后就会退出函数的执行，`return` 之后写的代码是无效的。
+
+### 加入参数默认值
+
+你可以为参数设置一个默认值，这样在函数调用没有传递该参数时使用该默认值。
+
+```python
+def fun(x, y, z=3):
+    print(f'x = {x}, y = {y}, z = {z}')
+    return x + y + z
+```
+
+注意，如果一个参数设置了默认值，那么之后的所有参数都需要有默认值。
+
+```python sandbox
+def fun(x, y, z=3):
+    print(f'x = {x}, y = {y}, z = {z}')
+    return x + y + z
+
+fun(1, 2)
+```
+
+### 捕获多余位置参数
+
+有时候函数定义的时候并不知道用户会传递多少参数，例如 `print` 函数。
+
+Python 允许函数捕获多余的**位置参数**，作为元组传入函数：
+
+```python
+def fun(x, y, *args):
+    print(f'x = {x}, y = {y}, args = {args}')
+```
+
+当然，`args` 可以自己命名，一般都命名为 `args`。
+
+```python sandbox
+def fun(x, y, *args):
+    print(f'x = {x}, y = {y}, args = {args}')
+
+fun(1, 2, 3, 4)
+```
+
+### 仅关键字参数
+
+`print` 函数除了位置参数外还能捕获 `sep`、`end` 等关键字参数。
+
+这些参数就是放在 `*args` 之后的参数，只能通过关键字参数传递。
+
+```python
+def fun(x, y, *args, z):
+    print(f'x = {x}, y = {y}, args = {args}, z = {z}')
+```
+
+尝试调用一下这个函数：
+
+```python sandbox
+def fun(x, y, *args, z):
+    print(f'x = {x}, y = {y}, args = {args}, z = {z}')
+
+fun(1, 2, 3, 4, z=5)
+```
+
+由于 `z` 只能通过关键字参数传递，因此称为仅关键字参数。
+
+而 `x` 和 `y` 既能通过位置参数传递，又能通过关键字参数传递，所以称作普通参数。
+
+不过由于关键字参数必须在位置参数之后，如果 `y` 使用关键字参数传递，那么 `args` 就注定是空元组了。
+
+有时候你不希望捕获更多的位置参数，但是还是想要让一个参数是仅关键字的，那么就可以这样：
+
+```python
+def fun(x, y, *, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+```
+
+这里 `*` 不是一个参数，而是标志着之后的参数均为仅关键字。
+
+此时如果你尝试用位置参数传递给 `z` 就会报错：
+
+```python sandbox
+def fun(x, y, *, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+
+fun(1, 2, 3)
+```
+
+### 捕获多余关键字参数
+
+和位置参数同理，多余的关键字参数也可以被捕获：
+
+```python
+def fun(x, y, *args, z, **kwargs):
+    print(f'x = {x}, y = {y}, args = {args}, z = {z}, kwargs = {kwargs}')
+```
+
+尝试传递更多关键字参数：
+
+```python sandbox
+def fun(x, y, *args, z, **kwargs):
+    print(f'x = {x}, y = {y}, args = {args}, z = {z}, kwargs = {kwargs}')
+
+fun(1, 2, 3, 4, z=1, w=2, k=3)
+```
+
+可以看到多余的关键字参数被以字典的形式传入了 `kwargs` 中。
+
+### 仅位置参数
+
+之前说过 `*` 之后的参数都是仅关键字参数。同样地，`/` 之前的参数都是仅位置参数：
+
+```python
+def fun(x, /, y, *, z):
+    print(f'x = {x}, y = {y}, z = {z}')
+```
+
+当然，`/` 必须出现在 `*` 之前，不然就会出现又仅位置又仅关键字的参数了。
+
+### pass
+
+有时候你写了一个函数但是还没想好怎么实现，希望暂时作为空函数。
+
+由于 Python 不允许空的代码块存在，这时候你可以使用 `pass` 作为占位符：
+
+```python
+def fun():
+    pass
+```
+
+## 实战训练
+
+请自行编写一个 `myprint()`，实现 `print` 的功能，但是把输出作为一个字符串返回。
+
+```python sandbox
+# 实战训练
+# 实现这个函数
+def myprint():
+    pass
+
+output = myprint('Hello', 'world', '!', sep='', end='')
+print(output)
+```
