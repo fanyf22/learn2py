@@ -210,6 +210,35 @@ def fun():
     pass
 ```
 
+## 动态调用
+
+除了参数列表明确的静态调用外，Python 也允许动态调用：
+
+```python sandbox
+args = ['world', '!']
+kwargs = {'end': '\n'}
+
+print('Hello', *args, sep='', **kwargs)
+```
+
+这个代码形式上和捕获位置参数与关键字参数是一样的，有点类似于逆过程。
+
+## 函数也是变量
+
+我们之前都是通过 `=` 赋值来定义的变量，但事实上使用 `def` 定义的函数也是变量。
+
+你可以对这个变量重新赋值，甚至将其作为参数传入函数中：
+
+```python sandbox
+def add(a, b):
+    return a + b
+
+def call(f, *args, **kwargs):
+    return f(*args, **kwargs)
+
+print(call(add, 1, 2))
+```
+
 ## 实战训练
 
 请自行编写一个 `myprint()`，实现 `print` 的功能，但是把输出作为一个字符串返回。

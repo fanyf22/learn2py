@@ -1,0 +1,140 @@
+import SandBox from '@/components/sandbox'
+
+# 类与对象基础
+
+从这一章开始，我们要慢慢学会面向对象的思维方式。
+
+类与对象的概念可以极大简化思考量和代码体积，是编程中必须熟悉的概念。
+
+## 类与对象
+
+### 什么是类
+
+你可以把类理解为一个模板，利用这个模板可以创建出许多对象。
+
+在 Python 的近期版本中，你通常可以把类和类型简单地等同起来，可以说你所知道的内置类型其实都是类。
+
+一个类包含若干**属性**，每个属性都是一个变量。如果一个属性是函数，那么这个属性称为**方法**。
+
+### 什么是对象
+
+对象是使用类创造出来的变量，称为该类的**实例**。
+
+同一个类创造的对象之间的关联不大，改变一个对象不会改变其他对象的行为。
+
+就好像你用同一个模具造了两个容器，它们装什么互不影响。
+
+## 创建类与对象
+
+Python 使用 class 语句来创建一个类：
+
+```python
+class Test:
+    pass
+```
+
+这里还是用 `pass` 表示不执行任何操作。
+
+接下来我们使用 `Test` 类来创建一个实例：
+
+```python sandbox
+class Test:
+    pass
+
+test = Test()
+print(test)
+```
+
+也就是说，类名本身也可以作为一个函数，用来创建一个该类的实例。
+
+现在我们为这个类加入属性：
+
+```python sandbox
+class Test:
+    value = 'Hello, world!'
+
+test = Test()
+print(test.value)
+```
+
+在类中声明的属性的值是该属性的初始值，创建实例后可以改变属性：
+
+```python sandbox
+class Test:
+    value = 'Hello, world!'
+
+test = Test()
+test.value = 'Hello'
+print(test.value)
+```
+
+同样地，我们可以为这个类加入一些方法：
+
+```python sandbox
+class Test:
+    value = 'Hello, world!'
+
+    def output(self):
+        print(self.value)
+
+test = Test()
+test.output()
+```
+
+所有方法都要以 `self` 作为第一个参数，在调用方法时会将实例作为参数传入。
+
+在这个例子中，`test` 这个实例被作为参数传入了 `output()`，所以可以用 `self.value` 访问属性。
+
+## 构造函数
+
+仅用设定属性初始值的方式功能有限，我们可以为类指定一个构造函数在创建实例时运行：
+
+```python sandbox
+class Test:
+    def __init__(self):
+        print('This is function __init__.')
+        self.value = 'Hello, world!'
+
+    def output(self):
+        print(self.value)
+
+test = Test()
+test.output()
+```
+
+在构造函数中可以直接创建属性，这样就不需要另外声明属性了。
+
+从运行结果可以看出构造函数是在使用 `Test()` 时被调用的。
+
+我们还可以为构造函数添加一些参数，这样就可以控制生成的初始实例了：
+
+```python sandbox
+class Test:
+    def __init__(self, value):
+        self.value = value
+
+    def output(self):
+        print(self.value)
+
+test = Test('Hello, world!')
+test.output()
+```
+
+也就是说，`Test()` 函数的参数会被直接传到 `__init__` 构造函数里，从而控制实例初始化的行为。
+
+## 实战训练
+
+编写一个类 `Student`，其包含 `identity` 和 `name` 两个属性，并且在构造函数中需要指定这两个属性的初始值。
+
+同时，其还有一个 `output` 方法，用来输出这个学生的信息。
+
+```python sandbox
+# 实战训练
+class Student:
+    pass
+
+student1 = Student('123456', '张三')
+student2 = Student('654321', '李四')
+student1.output()
+student2.output()
+```

@@ -1,6 +1,7 @@
 import { Logo } from '@/components/logo'
 import { name, description, author, repository } from '@/lib/global'
 import Theme from '@/components/theme'
+import styles from '@/styles/styles.module.css'
 
 export default {
   docsRepositoryBase: `${repository}/tree/main`,
@@ -17,7 +18,7 @@ export default {
     </>
   ),
   main: ({ children }) => <Theme>{children}</Theme>,
-  logo: <Logo />,
+  logo: <Logo className={styles.masked_logo} />,
   project: { link: repository },
   toc: { title: '目录', backToTop: true },
   editLink: { content: '在 GitHub 上编辑此页' },
@@ -26,7 +27,7 @@ export default {
   footer: {
     content: (
       <span>
-        Apache2 {new Date().getFullYear()} ©{author}.
+        Apache {new Date().getFullYear()} ©{author}.
       </span>
     ),
   },
