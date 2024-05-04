@@ -97,7 +97,7 @@ export default function SandBox({ title = '测试代码', value = '' }) {
   const outputDisplay = (
     <div className="mt-4 rounded-xl border-[1px] border-blue-100 bg-blue-50 p-4 text-base text-blue-500">
       {output.split('\n').map((text, i) => (
-        <p key={i} style={{ fontFamily: font }}>
+        <p key={i} className="sandbox-output" style={{ fontFamily: font }}>
           {text}
         </p>
       ))}
@@ -107,7 +107,7 @@ export default function SandBox({ title = '测试代码', value = '' }) {
   const errorDisplay = (
     <div className="mt-4 rounded-xl border-[1px] border-red-100 bg-red-50 p-4 text-base text-red-500">
       {error.split('\n').map((text, i) => (
-        <p key={i} style={{ fontFamily: font }}>
+        <p key={i} className="sandbox-output" style={{ fontFamily: font }}>
           {text}
         </p>
       ))}

@@ -1,0 +1,179 @@
+import SandBox from '@/components/sandbox'
+
+# 捕获异常
+
+顾名思义，异常就是程序运行过程中发生的错误。
+
+也许你已经遇到过了一些异常：列表索引超出范围、字典获取时报找不到键等等。
+
+这些异常只要得到了合适的处理程序依然可以正常运行不会退出。
+
+合理使用异常可以让程序更加简洁。
+
+## 异常报错
+
+如果一个异常没有被处理，那么解释器就会将错误信息打印到控制台并退出程序。
+
+现在请尝试写一些会引发异常的代码，观察报错信息（在 IDLE 中测试效果更佳）：
+
+```python sandbox
+# 异常测试
+arr = [1, 2, 3]
+print(arr[3])
+```
+
+你可能得到了类似的输出：
+
+```text
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    print(arr[3])
+IndexError: list index out of range
+```
+
+`Traceback{}` 这部分是解释器回溯引发异常的代码。如果有函数调用存在的话会按照调用的顺序进行回溯，方便开发者确定引发异常的位置。
+
+最后一行则是异常信息，分为异常名称和异常内容，这里异常名称是 `IndexError`。
+
+## 内置异常
+
+上面提到的 `IndexError` 是一个内置异常，表示索引访问时索引不存在。
+
+下面是常用的标准异常：
+
+| 异常名称       | 异常含义               |
+|---------------|------------------------|
+| `ImportError` | 导入模块失败            |
+| `IndexError`  | 序列中没有此索引        |
+| `KeyError`    | 字典中没有此键          |
+| `NameError`   | 没有声明变量就使用      |
+| `TypeError`   | 使用了不支持该类型的操作 |
+| `ValueError`  | 传入了无效的参数        |
+
+## 捕获异常
+
+使用 try-except 语句来捕获异常：
+
+```python sandbox
+arr = [1, 2, 3]
+
+try:
+    print(arr[3])
+except IndexError:
+    print('Oops.')
+```
+
+你可以连续使用 `except`，这样会依次判断是否捕获了异常：
+
+```python sandbox
+d = {'x': 1, 'y': 2}
+
+try:
+    print(d['z'])
+except IndexError:
+    print('index error')
+except KeyError:
+    print('key error')
+```
+
+如果要捕获任意类型的异常，建议使用 `Exception` 类，这个类包含所有标准异常：
+
+```python sandbox
+try:
+    print(1 / 0)
+except IndexError:
+    print('index error')
+except KeyError:
+    print('key error')
+except Exception:
+    print('any error')
+```
+
+注意，异常产生后，原本的代码都不会被执行，而是向上抛出异常，直到遇到能处理异常的 try-except 语句，执行 except 的代码。所以说 `try` 代码块的代码不会被执行完，比如：
+
+```python sandbox
+try:
+    print(1 / 0)
+    print('This code will not be executed.')
+except ZeroDivisionError:
+    print('zero division error')
+```
+
+## 更多语句
+
+try-except 语句还有一些可选的语句可以添加。
+
+### try-except-else 语句
+
+在所有 `except` 语句之后允许使用 `else` 语句，这表示没有异常时执行的语句。
+
+```python
+try:
+    print(2 / 1)
+except ZeroDivisionError:
+    print('zero division error')
+else:
+    print('it works')
+```
+
+### try-except-finally 语句
+
+有时候你希望不管有没有异常都在最后执行一些代码，你可以将其放在 `finally` 代码块里：
+
+```python sandbox
+try:
+    print(1 / 0)
+except ZeroDivisionError:
+    print('error')
+finally:
+    print('This code is always executed.')
+```
+
+注意，`else` 需要在 `finally` 前面。
+
+## 获取异常信息
+
+如果你要获得异常的消息，你可以使用 `as` 关键字：
+
+```python sandbox
+try:
+    print(1 / 0)
+except ZeroDivisionError as error:
+    print(error)
+```
+
+这里 `error` 的类型实际上是 `ZeroDivisionError`。这涉及到面向对象编程的知识，之后会讲。
+
+我们暂时只需要知道可以用 `print` 直接输出异常信息，以及可以用 `str(error)` 转换为字符串即可。
+
+## 向上抛出
+
+我们说过，异常是向上抛出的。我们考虑这个例子：
+
+```python sandbox
+def f(x, y):
+    print(x / y)
+
+try:
+    f(1, 0)
+except ZeroDivisionError:
+    print('zero division error')
+```
+
+也就是说，在 `f` 函数内发生的异常，会抛出到 `f` 之外被捕获。
+
+只要一个异常没有被捕获，就会一直向上抛出。
+
+这样的抛出行为打破了原本代码的顺序执行，有时候可以使代码更有可读性且更简洁。
+
+## 实战训练
+
+首先从用户输入若干文本，每条文本要求用空格分隔为两部分，第一部分是键，第二部分是值，使用用户的输入构成一个字典。用户输入 `end{}` 则停止输入。
+
+然后用户任意输入一个文本，使用该文本作为键查询对应的值并输出。
+
+请合适地处理各种异常，做到不管用户怎么输入程序总能够正常运行并提示用户可能的错误。
+
+```python sandbox
+# 实战训练
+```

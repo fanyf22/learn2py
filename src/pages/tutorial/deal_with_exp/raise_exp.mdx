@@ -1,0 +1,32 @@
+import SandBox from '@/components/sandbox'
+
+# 抛出异常
+
+除了捕获内置的异常行为外，你还可以手动抛出异常。
+
+在函数中抛出异常来描述可能的错误，或者通过异常的向上抛出机制来简化代码，都是值得尝试的。
+
+## raise 关键字
+
+你可以在任何地方使用 `raise` 抛出异常：
+
+```python sandbox
+# raise 抛出异常
+raise ValueError('I just want to raise this error.')
+```
+
+这里括号里的内容就是异常信息。
+
+## 实战训练
+
+请编写一个函数，接受两个正整数参数，并返回他们的和。
+
+要求检查这两个参数的类型，必须为整数且为真。
+
+如果不满足条件，抛出合适的异常。
+
+```python sandbox
+# 实战训练
+def add(x, y):
+    return x + y
+```

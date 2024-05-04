@@ -1,0 +1,61 @@
+import SandBox from '@/components/sandbox'
+
+# 模块
+
+之前我们都使用的是内置的函数，例如 `print` 函数。
+
+但是内置的函数是有限，如果我们需要使用更多的功能，就可以导入模块。
+
+这里我们以 `time` 模块为例，这是一个处理时间的模块。
+
+## 导入模块
+
+```python sandbox
+import time
+
+print(time.time())
+```
+
+首先使用 `import time` 来导入 `time` 模块。
+
+要使用 `time` 模块提供的功能，只需要在名称前加上 `time.` 即可。
+
+这里 `time` 模块提供了 `time` 函数，所以用 `time.time()` 调用。
+
+这个函数的作用是返回当前的时间戳。时间戳是从伦敦时间 1970 年 1 月 1 日午夜开始计算的秒数。
+
+## 导入特定功能
+
+如果你希望从模块中导入特定的功能，可以使用 `from import` 语法：
+
+```python sandbox
+from time import time
+
+print(time())
+```
+
+这样就直接导入了 `time` 函数，而不再是导入模块，所以直接使用 `time()`。
+
+如果要导入多个功能，可以使用逗号隔开：
+
+```python sandbox
+from time import time, timezone
+
+print(time(), timezone)
+```
+
+## 导入所有功能
+
+如果你需要用到模块里的很多功能，不希望一个一个列举，那么可以使用 `*` 来代替导入的功能：
+
+```python sandbox
+from time import *
+
+print(time(), timezone)
+```
+
+PEP8 规定不要使用 `*` 进行导入，这会导致一些静态检查器失效。
+
+## 在开头导入
+
+PEP8 规范要求模块导入放在代码的开头。这样方便管理所有的导入。
